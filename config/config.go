@@ -1,8 +1,12 @@
 package config
 
 type Config struct {
-	DatabaseURL string `mapstructure:"DATABASE_URL"`
-	Port        int    `mapstructure:"PORT"`
-	DebugMode   bool   `mapstructure:"debug_mode"`
-	//...
+	LoggingConfig LoggingConfig `mapstructure:"logging"`
+}
+
+type LoggingConfig struct {
+	HTTPRequests bool   `mapstructure:"http_requests"`
+	Level        string `mapstructure:"level"`
+	Format       string `mapstructure:"format"`
+	Destination  string `mapstructure:"destination"`
 }
