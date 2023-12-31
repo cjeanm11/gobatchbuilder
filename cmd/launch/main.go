@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gobatch/config"
+	"gobatchbuilder/config"
 	"log"
 )
 
