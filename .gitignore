@@ -1,0 +1,67 @@
+# IntelliJ IDEA
+.idea/
+
+# Go binaries and packages
+/bin/
+/pkg/
+
+# Compiled Object files, Static and Dynamic libs
+*.o
+*.a
+
+# Log files and binaries created by go test
+*.test
+*.out
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.cover
+
+# Dependency directories (vendoring)
+/vendor/
+
+# IDE-specific files
+.vscode/
+*.iml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Compiled binary for a Go package
+*.exe
+
+# Compiled binary for a Go package on Windows
+*.exe/
+*.exe~
+*.dll
+*.bat
+# Binaries for programs and plugins
+*.so
+*.dylib
+
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
+.glide/
+
+
+
+# Gedit backup files
+*~
+
+
+# Folders
+_obj
+_test
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+# Go build directory
+bin/
