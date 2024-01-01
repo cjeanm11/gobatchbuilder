@@ -1,6 +1,8 @@
-package sequencer
+package batch
 
 import "fmt"
+
+type Flow []Step
 
 type Step struct {
 	Name     string
