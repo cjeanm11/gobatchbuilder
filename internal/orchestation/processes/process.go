@@ -2,17 +2,17 @@ package processes
 
 import (
 	"fmt"
-	"gobatchbuilder/internal/orchestation/batch"
+	"gobatchbuilder/internal/orchestation/build"
 )
 
-func NewExBatchProcess() batch.BatchProcess {
-	return batch.BatchProcess{
+func NewExBatchProcess() build.BatchProcess {
+	return build.BatchProcess{
 		Name: "ex_batch_porcess",
-		Jobs: []batch.Job{
+		Jobs: []build.Job{
 			{
 				Name: "Job1",
-				Steps: batch.Flow{
-					Steps: []batch.Step{
+				Steps: build.Flow{
+					Steps: []build.Step{
 						{Name: "Step1", Executor: ExecuteStep1},
 						{Name: "Step2", Executor: ExecuteStep2},
 					},
