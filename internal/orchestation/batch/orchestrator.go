@@ -5,7 +5,7 @@ import "fmt"
 // Job is now generic and holds a Flow of type T
 type Job struct {
 	Name  string
-	Steps Flow
+	Steps Sequence
 }
 
 type BatchProcess struct {
@@ -27,7 +27,7 @@ func (o *Orchestrator) ExecuteProcess(process BatchProcess) error {
 	for _, job := range process.Jobs {
 		fmt.Printf("Executing job: %s\n", job.Name)
 
-		finalState, err := sequencer.ExecuteFlow(&job.Steps)
+		finalState, err := sequencer.ExecuteSequence(&job.Steps)
 		if err != nil {
 			fmt.Printf("Error executing job %s: %s\n", job.Name, err)
 			return err

@@ -2,7 +2,7 @@ package batch
 
 import "fmt"
 
-type Flow struct {
+type Sequence struct {
 	Steps []Step
 	State any
 }
@@ -31,10 +31,10 @@ func NewSequencer() Sequencer {
 	return Sequencer{}
 }
 
-func (s Sequencer) ExecuteFlow(flow *Flow) (interface{}, error) {
-	currentState := flow.State
+func (s Sequencer) ExecuteSequence(sequence *Sequence) (interface{}, error) {
+	currentState := sequence.State
 
-	for _, step := range flow.Steps {
+	for _, step := range sequence.Steps {
 		var err error
 		currentState, err = step.Execute(currentState)
 		if err != nil {
