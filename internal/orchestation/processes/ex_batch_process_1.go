@@ -12,21 +12,25 @@ func NewExBatchProcess() batch.BatchProcess {
 			{
 				Name: "Job1",
 				Steps: batch.Flow{
-					{Name: "Step1", Executor: executeStep1},
-					{Name: "Step2", Executor: executeStep2},
-					// add more steps...
+					Steps: []batch.Step{
+						{Name: "Step1", Executor: ExecuteStep1},
+						{Name: "Step2", Executor: ExecuteStep2},
+					},
 				},
 			},
 		},
 	}
 }
 
-func executeStep1() error {
+func ExecuteStep1(_ any) (any, error) {
 	fmt.Println("Executing Step1")
-	return nil
+	var startingValue int8 = 1
+	return any(startingValue), nil
 }
 
-func executeStep2() error {
+func ExecuteStep2(input any) (any, error) {
 	fmt.Println("Executing Step2")
-	return nil
+	res := input.(int8)
+	res += 1
+	return any(res), nil
 }

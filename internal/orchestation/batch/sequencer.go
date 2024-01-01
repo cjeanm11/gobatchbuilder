@@ -1,35 +1,33 @@
 package batch
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type Flow []Step
+type Flow struct {
+	Steps  []Step
+	Result interface{}
+}
 
 type Step struct {
 	Name     string
-	Executor func() error
+	Executor func(any) (any, error)
 }
 
 type Sequencer struct{}
 
-func NewSequencer() *Sequencer {
-	return &Sequencer{}
+func NewSequencer() Sequencer {
+	return Sequencer{}
 }
-
-func (s *Sequencer) executeStep(step Step) error {
-	fmt.Printf("Executing step: %s\n", step.Name)
-	if err := step.Executor(); err != nil {
-		return err
-	}
-	fmt.Printf("Step %s completed successfully\n", step.Name)
-	return nil
-}
-
-func (s *Sequencer) ExecuteFlow(flow Flow) error {
-	for _, step := range flow {
-		err := s.executeStep(step)
+func (s *Sequencer) ExecuteFlow(flow Flow) (interface{}, error) {
+	for _, step := range flow.Steps {
+		res, err := step.Executor(flow.Result)
 		if err != nil {
-			return err
+			fmt.Printf("Error executing step: %s\n", err)
+			return nil, err
 		}
+		flow.Result = res
+		fmt.Printf("Result after %s: %v\n", step.Name, res)
 	}
-	return nil
+	return flow.Result, nil
 }
