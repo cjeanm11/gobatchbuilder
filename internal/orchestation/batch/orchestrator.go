@@ -25,14 +25,11 @@ func (o *Orchestrator) ExecuteProcess(process BatchProcess) error {
 
 	for _, job := range process.Jobs {
 		fmt.Printf("Executing job: %s\n", job.Name)
-		s := NewSequencer()
-		for _, step := range job.Steps {
-			fmt.Printf("Executing step: %s\n", step.Name)
-			if err := s.ExecuteStep(step); err != nil {
-				return err
-			}
+		sequencer := NewSequencer()
+		if err := sequencer.ExecuteFlow(job.Steps); err != nil {
+			fmt.Printf("Error executing flow: %s\n", err)
+			return err
 		}
-
 		fmt.Printf("Job %s completed successfully\n", job.Name)
 	}
 
