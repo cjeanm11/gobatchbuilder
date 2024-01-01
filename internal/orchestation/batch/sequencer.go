@@ -11,8 +11,8 @@ type Step struct {
 
 type Sequencer struct{}
 
-func NewSequencer() Sequencer {
-	return Sequencer{}
+func NewSequencer() *Sequencer {
+	return &Sequencer{}
 }
 
 func (s *Sequencer) ExecuteStep(step Step) error {
