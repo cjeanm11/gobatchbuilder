@@ -1,17 +1,16 @@
-package build
+package batch
 
-import (
-	"fmt"
-)
+import "fmt"
+
+// Job is now generic and holds a Flow of type T
+type Job struct {
+	Name  string
+	Steps Flow
+}
 
 type BatchProcess struct {
 	Name string
 	Jobs []Job
-}
-
-type Job struct {
-	Name  string
-	Steps Flow
 }
 
 type Orchestrator struct{}
@@ -23,14 +22,18 @@ func NewOrchestrator() *Orchestrator {
 func (o *Orchestrator) ExecuteProcess(process BatchProcess) error {
 	fmt.Printf("Executing process: %s\n", process.Name)
 
+	sequencer := NewSequencer() // Create a sequencer instance
+
 	for _, job := range process.Jobs {
 		fmt.Printf("Executing job: %s\n", job.Name)
-		sequencer := NewSequencer()
-		if _, err := sequencer.ExecuteFlow(job.Steps); err != nil {
-			fmt.Printf("Error executing flow: %s\n", err)
+
+		finalState, err := sequencer.ExecuteFlow(&job.Steps)
+		if err != nil {
+			fmt.Printf("Error executing job %s: %s\n", job.Name, err)
 			return err
 		}
-		fmt.Printf("Job %s completed successfully\n", job.Name)
+
+		fmt.Printf("Job %s completed successfully with final state: %+v\n", job.Name, finalState)
 	}
 
 	fmt.Printf("Process %s completed successfully\n", process.Name)
