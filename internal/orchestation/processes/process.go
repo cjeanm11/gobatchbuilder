@@ -12,7 +12,7 @@ func NewExBatchProcess() batch.BatchProcess {
 		Jobs: []batch.Job{
 			{
 				Name: "Job1",
-				Steps: batch.Flow{
+				Steps: batch.Sequence{
 					Steps: []batch.Step{
 						batch.NewStep("Read File", FileReaderStep),
 						batch.NewStep("Capitalize Data", CapitalizeProcessorStep),
