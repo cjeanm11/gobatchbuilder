@@ -2,7 +2,7 @@ package processes
 
 import (
 	"fmt"
-	"github.com/cjeanm11/gobatchbuilder/internal/orchestation/batch"
+	batch "github.com/cjeanm11/gobatchbuilder/internal/orchestation/batch"
 	"strings"
 )
 
@@ -50,6 +50,7 @@ func DatabaseWriterStep(data interface{}) (interface{}, error) {
 	fmt.Println("Step 3: Write to Database")
 	// Placeholder for actual database writing logic
 	// ...
+
 	strData, ok := data.([]string)
 	if !ok {
 		return nil, fmt.Errorf("expected []string, got %T", data)

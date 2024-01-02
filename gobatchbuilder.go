@@ -1,0 +1,4 @@
+package gobatchbuilder
+
+func main() {
+}
