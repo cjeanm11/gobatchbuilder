@@ -46,7 +46,7 @@ Here's a simple example to demonstrate how you might set up and execute a batch 
                 {
                     Name: "Job1", 
                     // List the steps to be executed as part of this job.
-                    Steps: batch.Sequence{
+                    Sequence: batch.Sequence{
                         Steps: []batch.Step{
                             batch.NewStep("Read File", FileReaderStep),
                             batch.NewStep("Capitalize Data", CapitalizeProcessorStep),
