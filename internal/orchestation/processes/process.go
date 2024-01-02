@@ -2,7 +2,7 @@ package processes
 
 import (
 	"fmt"
-	"gobatchbuilder/internal/orchestation/batch"
+	"github.com/cjeanm11/gobatchbuilder/internal/orchestation/batch"
 	"strings"
 )
 
