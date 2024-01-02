@@ -1,6 +1,0 @@
-
-logging:
-  http_requests: true  # Enable or disable HTTP request logging
-  level: "INFO"  # Logging level: DEBUG, INFO, WARN, ERROR, etc.
-  format: "json"  # Log format: json, plain, etc.
-  destination: "stdout"  # Log destination: stdout, file, syslog, etc.

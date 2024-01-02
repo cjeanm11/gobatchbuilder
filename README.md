@@ -1,9 +1,10 @@
-cmd/batchmain/main.go: The starting point of the application, configuring and launching batch jobs.
+# Go Batch Processing Package
 
-internal/: Core application logic that isn't exposed externally.
+This Go package, `gobatchbuilder`, provides a framework for defining and executing batch processes. 
 
-orchestration/: Manages the execution flow of batch jobs and steps.
+## Installation
 
-tasks/: Specific batch processing functionalities like reading, processing, and writing data.
+You can install this package using Go modules:
 
-common/: Shared utilities and helpers such as logging and validation.
+```shell
+go get github.com/cjeanm11/gobatchbuilder
