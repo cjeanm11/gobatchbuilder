@@ -2,7 +2,6 @@ package gobatchbuilder
 
 import "fmt"
 
-// Job is now generic and holds a Flow of type T
 type Job struct {
 	Name     string
 	Sequence Sequence

@@ -9,7 +9,6 @@ import (
 func main() {
 
 	batchProcess := processes.NewExBatchProcess()
-	// Create batch process orchestrateur that will execute the process
 	orchestrateur := batch.NewOrchestrator()
 
 	if err := orchestrateur.ExecuteProcess(batchProcess); err != nil {

@@ -2,7 +2,6 @@ package gobatchbuilder
 
 import "fmt"
 
-// Job is now generic and holds a Flow of type T
 type Job struct {
 	Name  string
 	Steps Sequence
@@ -22,7 +21,7 @@ func NewOrchestrator() *Orchestrator {
 func (o *Orchestrator) ExecuteProcess(process BatchProcess) error {
 	fmt.Printf("Executing process: %s\n", process.Name)
 
-	sequencer := NewSequencer() // Create a sequencer instance
+	sequencer := NewSequencer()
 
 	for _, job := range process.Jobs {
 		fmt.Printf("Executing job: %s\n", job.Name)
